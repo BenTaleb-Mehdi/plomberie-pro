@@ -1,0 +1,44 @@
+PHP Deprecated:  PHP Startup: session.sid_length INI setting is deprecated in Unknown on line 0
+PHP Deprecated:  PHP Startup: session.sid_bits_per_character INI setting is deprecated in Unknown on line 0
+
+Deprecated: PHP Startup: session.sid_length INI setting is deprecated in Unknown on line 0
+
+Deprecated: PHP Startup: session.sid_bits_per_character INI setting is deprecated in Unknown on line 0
+
+  Dropping all tables  202.57ms DONE
+
+   INFO  Preparing database.  
+
+  Creating migration table  36.99ms DONE
+
+   INFO  Running migrations.  
+
+  0001_01_01_000000_create_users_table  122.68ms DONE
+  0001_01_01_000001_create_cache_table  77.73ms DONE
+  0001_01_01_000002_create_jobs_table  105.01ms DONE
+  2026_04_04_142647_create_permission_tables  444.12ms DONE
+  2026_04_04_143220_add_fields_to_users_table  160.40ms DONE
+  2026_04_04_143221_create_service_types_table  46.69ms DONE
+  2026_04_04_143222_create_bookings_table  112.99ms FAIL
+
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[HY000]: General error: 1824 Failed to open the referenced table 'technicians' (Connection: mysql, Host: 127.0.0.1, Port: 3306, Database: plomberie_db, SQL: alter table `bookings` add constraint `bookings_technician_id_foreign` foreign key (`technician_id`) references `technicians` (`id`) on delete set null)
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:838
+    834▕             $exceptionType = $this->isUniqueConstraintError($e)
+    835▕                 ? UniqueConstraintViolationException::class
+    836▕                 : QueryException::class;
+    837▕ 
+  ➜ 838▕             throw new $exceptionType(
+    839▕                 $this->getNameWithReadWriteType(),
+    840▕                 $query,
+    841▕                 $this->prepareBindings($bindings),
+    842▕                 $e,
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+      PDOException::("SQLSTATE[HY000]: General error: 1824 Failed to open the referenced table 'technicians'")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+      PDOStatement::execute()
+
